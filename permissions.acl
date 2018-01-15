@@ -1,0 +1,56 @@
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+} 
+
+rule ParticipantsCanReadAssetRegistry 
+{ 
+  description: "Allow the participants to read the asset registry" 
+  participant: "ANY" 
+  operation: READ 
+  resource: "org.acme.model.**" 
+  action: ALLOW 
+} 
+
+rule ParticipantsCannotModifyAssetRegistry 
+{ 
+  description: "Deny the participants the possibility to nodify the asset registry" 
+  participant: "ANY" 
+  operation: CREATE, UPDATE, DELETE  
+  resource: "org.acme.model.**" 
+  action: DENY 
+} 
+
+rule ParticipantsCanAccessSourceCode 
+{ 
+  description: "Allow the participants to see the source code" 
+  participant: "ANY" 
+  operation: READ 
+  resource: "org.hyperledger.composer.**" 
+  action: ALLOW 
+} 
+
+rule ParticipantsCannotModifySourceCode 
+{ 
+  description: "Deny the participants the modification of the source code" 
+  participant: "ANY" 
+  operation: CREATE, UPDATE, DELETE 
+  resource: "org.hyperledger.composer.**" 
+  action: DENY 
+} 
+
+
+
+
