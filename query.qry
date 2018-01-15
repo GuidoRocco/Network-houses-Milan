@@ -1,0 +1,96 @@
+
+/**
+ * Defines the queries of the Network Houses Milan. 
+ 
+ LEGENDA 
+ 
+ Q1 - Q3: Subdivide the participants based on their wages 
+ Q4 - Q6: Subdivide the properties based on their cost
+ Q7 - Q9: Query for id 
+ Q10-Q12: Query for name
+ 
+ */ 
+
+query Q1 
+{ 
+  description: "Select the owners that have a salary greater or equal than 300000 euro" 
+  statement: 
+     SELECT org.acme.model.Owner WHERE (saldo >= 300000) 
+} 
+ 
+query Q2 
+{ 
+  description: "Select the owners whose salaries lie between 100000 euro and 300000 euro" 
+  statement: 
+    SELECT org.acme.model.Owner WHERE ((saldo >= 100000) AND (saldo <= 300000)) 
+} 
+
+query Q3 
+{ 
+  description: "Seleziona i proprietari aventi un saldo minore di 100000 euro" 
+  statement: 
+    SELECT org.acme.model.Owner WHERE (saldo < 100000) 
+} 
+
+query Q4 
+{ 
+  description: "Seleziona le case aventi un costo maggiore o uguale a 300000 euro" 
+  statement: 
+    SELECT org.acme.model.Property WHERE (price >= 300000) 
+} 
+
+query Q5 
+{ 
+  description: "Seleziona le case aventi un costo compreso tra 100000 euro e 300000 euro" 
+  statement: 
+    SELECT org.acme.model.Property WHERE ((price >= 100000) AND (price <= 300000)) 
+} 
+
+query Q6 
+{ 
+  description: "Seleziona le case aventi un costo minore di 100000 euro" 
+  statement: 
+    SELECT org.acme.model.Property WHERE (price < 100000) 
+} 
+
+query Q7 
+{ 
+  description: "Seleziona le banche aventi un id specifico" 
+  statement: 
+    SELECT org.acme.model.Bank WHERE (id_bank == _$query_id) 
+} 
+
+query Q8 
+{ 
+  description: "Seleziona le agenzie immobiliari aventi un id specifico" 
+  statement: 
+    SELECT org.acme.model.Estate_Agency WHERE (id_agency == _$query_id) 
+} 
+
+query Q9 
+{ 
+  description: "Seleziona i proprietari aventi un id specifico" 
+  statement: 
+    SELECT org.acme.model.Owner WHERE (id_owner == _$query_id) 
+} 
+
+query Q10 
+{ 
+  description: "Seleziona la banca avente un nome specifico" 
+  statement: 
+    SELECT org.acme.model.Bank WHERE (name_bank == _$query_name) 
+} 
+
+query Q11 
+{ 
+  description: "Seleziona le agenzie immobiliari aventi un id specifico" 
+  statement: 
+    SELECT org.acme.model.Estate_Agency WHERE (name_agency == _$query_name) 
+} 
+
+query Q12 
+{ 
+  description: "Seleziona i proprietari aventi un nome e un cognome specifico" 
+  statement: 
+    SELECT org.acme.model.Owner WHERE ((first_name == _$query_first_name) AND (last_name == _$query_last_name)) 
+} 
