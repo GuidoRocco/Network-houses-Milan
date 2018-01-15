@@ -1,0 +1,96 @@
+
+
+namespace org.acme.model 
+
+asset Property identified by id_property 
+{
+  o String id_property 
+  o String type_property
+  o String road 
+  o String post_number 
+  o Double price
+  --> Owner owner 
+} 
+
+participant Owner identified by id_owner 
+{ 
+  o String id_owner 
+  o String first_name 
+  o String last_name 
+  o String ssn 
+  o Double saldo 
+  o Double monthly_wage 
+  o Boolean has_loan 
+} 
+
+participant Bank identified by id_bank 
+{ 
+  o String id_bank 
+  o String name_bank 
+} 
+
+participant Estate_Agency identified by id_agency 
+{
+  o String id_agency 
+  o String name_agency
+  o String[] owned_houses 
+} 
+
+transaction Buy
+{ 
+  o Double price
+  --> Owner owner 
+  --> Owner new_owner
+  --> Property property
+} 
+
+transaction Loan 
+{ 
+  o String id_loan 
+  o Double sum 
+  o Double monthly_payment
+  --> Owner loan_owner
+  --> Property property_to_buy 
+} 
+
+transaction Add_House 
+{ 
+  o String id_add 
+  --> Property house_to_add
+  --> Estate_Agency agency
+} 
+
+transaction Remove_House
+{ 
+  o String id_rm 
+  --> Property house_to_remove 
+  --> Estate_Agency agency 
+} 
+
+transaction Transfer_House 
+{ 
+  o String id_transf 
+  --> Property house_to_transfer
+  --> Estate_Agency selling_agency
+  --> Estate_Agency buying_agency
+} 
+
+transaction Buy_with_Agency 
+{ 
+  o String id_purchase
+  --> Estate_Agency agency
+  --> Owner new_owner
+  --> Property property_to_buy
+} 
+
+transaction Sell_to_Agency 
+{ 
+  o String id_sale 
+  o Double price 
+  --> Estate_Agency agency 
+  --> Owner owner 
+  --> Owner new_owner
+  --> Property property_to_sell 
+} 
+
+
