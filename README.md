@@ -1,4 +1,4 @@
-# network-houses-Milan
+# Network-houses-Milan
 
 > Network Houses Milan is a business network that implements a Blockchain than can instantly and safely manage 
 transaction of houses. The underlying idea is to simplify and optimize the sales and buying process 
